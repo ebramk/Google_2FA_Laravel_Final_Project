@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+
 class RegisterController extends Controller
 {
     /*
@@ -21,13 +22,14 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers {
+        // change the name of the name of the trait's method in this class
+        // so it does not clash with our own register method
+        register as registration;
+    }
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+
+
     protected $redirectTo = '/home';
 
     /**

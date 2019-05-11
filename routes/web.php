@@ -34,6 +34,10 @@ Route::patch('/questions/{question_id}/answer/{answer_id}', 'AnswerController@up
 Route::delete('/questions/{question_id}/answer/{answer_id}', 'AnswerController@destroy')->name('answers.destroy');
 Route::get('/complete-registration', 'Auth\RegisterController@completeRegistration');
 
+Route::post('/2fa', function () {
+    return redirect(URL()->previous());
+})->name('2fa')->middleware('2fa');
+
 
 Route::resources([
     'questions' => 'QuestionController',
